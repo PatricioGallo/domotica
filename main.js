@@ -28,6 +28,7 @@ let aire_acondicionado = document.getElementById("aire_acondicionado");
 let luz_pasillo = document.getElementById("luz_pasillo");
 let luz_bano = document.getElementById("luz_bano");
 let luz_cocina = document.getElementById("luz_cocina");
+let luz_cocina_lavarropa = document.getElementById("luz_cocina_lavarropa");
 let luz_balcon = document.getElementById("luz_balcon");
 let luz_balcon2 = document.getElementById("luz_balcon2");
 let luz_living = document.getElementById("luz_living");
@@ -42,6 +43,7 @@ let on_aa = 0;
 let l_pasillo = 0;
 let l_bano = 0;
 let l_cocina = 0;
+let l_cocina_l = 0;
 let l_balcon = 0;
 let l_balcon2 = 0;
 let l_living = 0;
@@ -54,7 +56,6 @@ let puerta2_on = 0;
 onValue(ref(db, '/ESP32_TFT/estado'), (snapshot) => { //TODO original /luz_dormitorio/estado
     l_dormitorio = snapshot.val(); 
     cambio_luz_dormitorio();
-    console.log(l_dormitorio);
 });
 //aire acondicionado 
 onValue(ref(db, '/aire_acondicionado/estado'), (snapshot) => {
@@ -62,22 +63,27 @@ onValue(ref(db, '/aire_acondicionado/estado'), (snapshot) => {
     cambio_aire_acondicionado();
 });
 //Luz cocina 
-onValue(ref(db, '/luz_cocina/estado'), (snapshot) => {
+onValue(ref(db, 'llave_cocina/luz_cocina/estado'), (snapshot) => {
     l_cocina = snapshot.val();
     cambio_luz_cocina();
 });
+//Luz cocina lavarropas
+onValue(ref(db, 'llave_cocina/luz_cocina_lavarropa/estado'), (snapshot) => {
+    l_cocina_l = snapshot.val();
+    cambio_luz_cocina_lavaropa();
+});
 //l_balcon
-onValue(ref(db, '/luz_balcon/estado'), (snapshot) => {
+onValue(ref(db, 'llave_living/luz_balcon/estado'), (snapshot) => {
     l_balcon = snapshot.val();
     cambio_luz_balcon();
 });
 //l_balcon2 
-onValue(ref(db, '/luz_balcon2/estado'), (snapshot) => {
+onValue(ref(db, 'llave_cocina/luz_balcon2/estado'), (snapshot) => {
     l_balcon2 = snapshot.val();
     cambio_luz_balcon2();
 });
 //l_living 
-onValue(ref(db, '/luz_living/estado'), (snapshot) => {
+onValue(ref(db, 'llave_living/luz_living/estado'), (snapshot) => {
     l_living = snapshot.val();
     cambio_luz_living();
 });
@@ -87,7 +93,7 @@ onValue(ref(db, '/puerta1/estado'), (snapshot) => {
     cambio_puerta1();
 });
 //puerta2_on 
-onValue(ref(db, '/puerta2/estado'), (snapshot) => {
+onValue(ref(db, 'llave_living/puerta2/estado'), (snapshot) => {
     puerta2_on = snapshot.val();
     cambio_puerta2();
 });
@@ -98,6 +104,7 @@ aire_acondicionado.addEventListener("click",respuesta_aire_acondicionado);
 luz_pasillo.addEventListener("click",respuesta_luz_pasillo);
 luz_bano.addEventListener("click",respuesta_luz_bano);
 luz_cocina.addEventListener("click",respuesta_luz_cocina);
+luz_cocina_lavarropa.addEventListener("click",respuesta_luz_cocina_lavarropa);
 luz_balcon.addEventListener("click",respuesta_luz_balcon);
 luz_balcon2.addEventListener("click",respuesta_luz_balcon2);
 luz_living.addEventListener("click",respuesta_luz_living);
@@ -152,11 +159,23 @@ function respuesta_luz_bano(){
 
 function respuesta_luz_cocina(){
     if(l_cocina == 0){
-        set(ref(db, '/luz_cocina'), {
+        set(ref(db, 'llave_cocina/luz_cocina'), {
             estado: 1,
           });
     } else if (l_cocina == 1){ 
-        set(ref(db, '/luz_cocina'), {
+        set(ref(db, 'llave_cocina/luz_cocina'), {
+            estado: 0,
+          });
+    } 
+}
+
+function respuesta_luz_cocina_lavarropa(){
+    if(l_cocina_l == 0){
+        set(ref(db, 'llave_cocina/luz_cocina_lavarropa'), {
+            estado: 1,
+          });
+    } else if (l_cocina_l == 1){ 
+        set(ref(db, 'llave_cocina/luz_cocina_lavarropa'), {
             estado: 0,
           });
     } 
@@ -164,7 +183,7 @@ function respuesta_luz_cocina(){
 
 function respuesta_luz_balcon(){
     if(l_balcon == 0){
-        set(ref(db, '/luz_balcon'), {
+        set(ref(db, 'llave_living/luz_balcon'), {
             estado: 1,
           });
     } else if (l_balcon == 1){ 
@@ -176,11 +195,11 @@ function respuesta_luz_balcon(){
 
 function respuesta_luz_balcon2(){
     if(l_balcon2 == 0){
-        set(ref(db, '/luz_balcon2'), {
+        set(ref(db, 'llave_cocina/luz_balcon2'), {
             estado: 1,
           });
     } else if (l_balcon2 == 1){ 
-        set(ref(db, '/luz_balcon2'), {
+        set(ref(db, 'llave_cocina/luz_balcon2'), {
             estado: 0,
           });
     } 
@@ -188,7 +207,7 @@ function respuesta_luz_balcon2(){
 
 function respuesta_luz_living(){
     if(l_living == 0){
-        set(ref(db, '/luz_living'), {
+        set(ref(db, 'llave_living/luz_living'), {
             estado: 1,
           });
     } else if (l_living == 1){ 
@@ -212,11 +231,11 @@ function respuesta_puerta1(){
 
 function respuesta_puerta2(){
     if(puerta2_on == 0){
-        set(ref(db, '/puerta2'), {
+        set(ref(db, 'llave_living/puerta2'), {
             estado: 1,
           });
     } else if (puerta2_on == 1){ 
-        set(ref(db, '/puerta2'), {
+        set(ref(db, 'llave_living/puerta2'), {
             estado: 0,
           });
     }  
@@ -243,6 +262,14 @@ function cambio_luz_cocina(){
         luz_cocina.innerHTML = "<img src=\"media/luz_apagada.png\">";
     } else if (l_cocina == 1){ 
         luz_cocina.innerHTML = "<img src=\"media/luz_encendida.png\">";
+   } 
+}
+
+function cambio_luz_cocina_lavaropa(){
+    if(l_cocina_l == 0){
+        luz_cocina_lavarropa.innerHTML = "<img src=\"media/luz_apagada.png\">";
+    } else if (l_cocina_l == 1){ 
+        luz_cocina_lavarropa.innerHTML = "<img src=\"media/luz_encendida.png\">";
    } 
 }
 
