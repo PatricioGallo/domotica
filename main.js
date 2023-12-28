@@ -187,7 +187,7 @@ function respuesta_luz_balcon(){
             estado: 1,
           });
     } else if (l_balcon == 1){ 
-        set(ref(db, '/luz_balcon'), {
+        set(ref(db, 'llave_living/luz_balcon'), {
             estado: 0,
           });
     } 
@@ -211,7 +211,7 @@ function respuesta_luz_living(){
             estado: 1,
           });
     } else if (l_living == 1){ 
-        set(ref(db, '/luz_living'), {
+        set(ref(db, 'llave_living/luz_living'), {
             estado: 0,
           });
     } 
