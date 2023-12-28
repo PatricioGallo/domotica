@@ -1,0 +1,529 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: serif; }
+  
+body {
+    background-color: #EBEAEA;
+}
+/*  COMIENZA HEADER PC */
+header{
+    width: 100%;
+    height: 150px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+.left_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.left_container h1{
+    font-size: 30px;
+    color: azure;
+    font-style: italic;
+    margin-top: 30px;
+}
+.right_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.right_container h1{
+    font-size: 20px;
+    color: azure;
+    margin-top: 50px;
+}
+.right_container h2{
+    font-size: 20px;
+    color: azure;
+    margin-top: 50px;
+    margin-right: 17%;
+    font-weight: 500;
+}
+.right_container a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-right: 5px;
+}
+.right_container a:hover{
+    color: grey;
+}
+
+/*  COMIENZA BODY PC*/
+.cuerpo_general{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.first_border{
+    width: 375px;
+    border: 1px solid #000;
+    height: 1050px;
+    display: flex;
+    justify-content: center;
+}   
+.second_border{
+    width: 90%;
+    height: 95%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+/*dormitorio*/
+.dormitorio{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+}
+.dor_cama{
+    width: 72%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+}
+.second_dor_cama{
+    width: 100%;
+    height: 230px;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+.aire_acondicionado{
+    width: 100%;
+    height: 76px;
+    display: flex;
+    justify-content: center;
+}
+.aire_acondicionado button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.aire_acondicionado img{
+    height: 55px;
+    width: 70px;
+}
+.texto_container_dor{
+    width: 100%;
+    height: 76px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.texto_container_dor h1{
+    font-size: 20px;
+    text-align: center;
+}
+.tercer_dom_cama{
+    border-right: 1px solid #000;
+    height: 20px;
+}
+.pasillo{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.pasillo button{
+    border: 0px ;
+    background-color: #EBEAEA;
+}
+.pasillo img{
+    width: 70px;
+    height: 70px;
+    margin-left: 10px;
+}
+/*baño*/
+.bano{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid #000;
+}
+.bano_entero{
+    width: 70%;
+    height: 250px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+.second_bano{
+    width: 100%;
+    height: 230px;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+.hinodoro{
+    width: 100%;
+    height: 150px;
+    border-right: 1px solid #000;
+    display: flex;
+}
+.Hinodoro_interno{
+    width: 90%;
+    height: 150px;
+    border-right: 1px solid #000;
+    border-top: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.texto_hinodoro{
+    display: flex;
+    justify-content: center;
+}
+.texto_hinodoro h1{
+    font-size: 22px;
+}
+.imagen_luz{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.imagen_luz button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.imagen_luz img{
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+}
+.hinodoro_interno_2{
+    width: 10%;
+    height: 150px;
+    border-bottom: 1px solid #000;
+}
+.tercer_hinodoro{
+    width: 100%;
+    height: 20px;
+    border-right: 1px solid #000;
+}
+.pasillo_hinodoro{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.primera_parte_pasillo{
+    width: 100%;
+    height: 125px;
+    display: flex;
+}
+.izq_pasillo{
+    width: 80%;
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+}
+.imagen_puerta_pasillo{
+    display: flex;
+    justify-content: center;
+}
+.imagen_puerta_pasillo button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.imagen_puerta_pasillo img{
+    width: 40px;
+    height: 40px;
+}
+.texto_puerta{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.texto_puerta p {
+    font-size: 15px;
+    text-align: center;
+}
+.puerta_pasillo{
+    width: 20%;
+    height: 70px;
+    background-color: brown; 
+}
+.segunda_parte_pasillo{
+    width: 100%;
+    height: 125px;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+}
+.imagen_luz_pasillo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.imagen_luz_pasillo button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.imagen_luz_pasillo img{
+    width: 70px;
+    height: 70px;
+}
+.
+/*cocina*/
+.cocina{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid #000;
+}
+.cocina_entera{
+    width: 70%;
+    height: 150px;
+    border-left: 1px solid #000;
+    display: flex;
+}
+.cocina_lavaropas{
+    width: 29%;
+    height: 150px;
+}
+.cocina_lavaropas_interno{
+    width: 100%;
+    height: 130px;
+}
+.cocina_lavaropas_pared{
+    width: 100%;
+    height: 20px; 
+    border-right: 1px solid #000;
+    background-color: brown;
+}
+.cocina_bacha{
+    width: 71%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+.bacha_interna{
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.texto_bacha{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.texto_bacha h1{
+   font-size: 20px;
+}
+.luz_bacha{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+}
+.luz_bacha button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.luz_bacha img{
+    width: 60px;
+    height: 60px;
+}
+.bacha_pared{
+    width: 100%;
+    height: 20px;
+    border-right: 1px solid #000;
+}
+.pasillo_cocina{
+    width: 30%;
+}
+/*living*/
+.living{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    border-right: 1px solid #000;
+}
+.balcon{
+    width: 20%;
+    height: 200px;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    background-color: #cfcfcf;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.texto_balcon_1 h1{
+    font-size: 18px;
+    text-align: center;
+}
+.luz_balcon{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.luz_balcon button{
+    border: 0px;
+    background-color: #cfcfcf;
+}
+.luz_balcon img{
+    width: 50px;
+    height: 50px;
+}
+
+.living_entero{
+    width: 80%;
+    height: 380px;
+}
+.living_interno{
+    width: 90%;
+    height: 300px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    margin-left: 10%;
+    display: flex;
+}
+.living_mesa{
+    width: 58%;
+    height: 280px;
+    border-top: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.text_living h1{
+    font-size: 22px;
+    text-align: center;
+}
+.luz_living{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.luz_living button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.luz_living img {
+    width: 70px;
+    height: 70px; 
+    margin-top: 10px;
+}
+.living_medio{
+    width: 33%;
+    height: 280px;
+}
+.box_puerta{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.imagen_puerta{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.imagen_puerta button{
+    border: 0px;
+    background-color: #EBEAEA;
+}
+.imagen_puerta img{
+    height: 45px;
+    width: 45px;
+}
+.living_derecha{
+    width: 20px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+.living_puerta{
+    width: 20px;
+    height: 70px;
+    border-top: 1px solid #000;
+    background-color: brown; 
+}
+.balcon_primario{
+    width: 100%;
+    height: 80px;
+}
+.balcon_pimario_interno{
+    width: 90%;
+    height: 79px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    background-color: #cfcfcf;
+}
+.texto_balcon{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.texto_balcon h1{
+    font-size: 22px;
+    text-align: center;
+}
+.luz_balcon_interno{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+.luz_balcon_interno button{
+    border: 0px;
+    background-color: #cfcfcf;
+}
+.luz_balcon_interno img {
+    width: 60px;
+    height: 60px; 
+}
+/*  COMIENZA FOOTER  */
+footer{
+    width: 100%;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    margin-top: 30px;
+}
+.container_footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.container_footer p {
+    font-size: 15px;
+    color: white;
+    margin-right: 5px;
+}
+.container_footer a {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+.container_footer a:hover {
+    color: yellowgreen;
+}
+
