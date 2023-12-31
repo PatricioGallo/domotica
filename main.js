@@ -36,7 +36,9 @@ let puerta1 = document.getElementById("puerta1");
 let puerta2 = document.getElementById("puerta2");
 let texto_puerta1 = document.getElementById("texto_puerta1");
 let texto_puerta2 = document.getElementById("texto_puerta2");
-
+let temp = document.getElementById("temp");
+let alarma_boton = document.getElementById("alarma_boton");
+let alarma_texto = document.getElementById("alarma_texto");
 
 let l_dormitorio = 0;
 let on_aa = 0;
@@ -49,6 +51,9 @@ let l_balcon2 = 0;
 let l_living = 0;
 let puerta1_on = 0;
 let puerta2_on = 0;
+let temp_dato =0 ;
+let alarma_boton_on = 0;
+let alarma_texto_on = 0;
 
 //Agrego eventos de lecturas de cada componente en firebase
 
@@ -97,6 +102,16 @@ onValue(ref(db, 'llave_living/puerta2/estado'), (snapshot) => {
     puerta2_on = snapshot.val();
     cambio_puerta2();
 });
+//temperatura 
+onValue(ref(db, 'ESP32_TFT/temperatura'), (snapshot) => {
+    temp_dato = snapshot.val();
+    cambio_temperatura();
+});
+//boton de alarma 
+onValue(ref(db, 'llave_living/puerta2/boton_alarma'), (snapshot) => {
+    alarma_boton_on = snapshot.val();
+    cambio_boton_alarma();
+});
 
 //Llamdao a funciones
 luz_dormitorio.addEventListener("click",respuesta_luz_dormitorio);
@@ -108,9 +123,7 @@ luz_cocina_lavarropa.addEventListener("click",respuesta_luz_cocina_lavarropa);
 luz_balcon.addEventListener("click",respuesta_luz_balcon);
 luz_balcon2.addEventListener("click",respuesta_luz_balcon2);
 luz_living.addEventListener("click",respuesta_luz_living);
-puerta1.addEventListener("click",respuesta_puerta1);
-puerta2.addEventListener("click",respuesta_puerta2);
-
+alarma_boton.addEventListener("click",respuesta_boton_alarma);
 
 //Funciones
 function respuesta_luz_dormitorio(){
@@ -217,30 +230,15 @@ function respuesta_luz_living(){
     } 
 }
 
-function respuesta_puerta1(){
-    if(puerta1_on == 0){
-        set(ref(db, '/puerta1'), {
-            estado: 1,
-          });
-    } else if (puerta1_on == 1){ 
-        set(ref(db, '/puerta1'), {
-            estado: 0,
-          });
+function respuesta_boton_alarma(){
+    if(alarma_boton_on == 0){
+        set(ref(db, 'llave_living/puerta2/boton_alarma'),1);
+    } else if (alarma_boton_on == 1){ 
+        set(ref(db, 'llave_living/puerta2/boton_alarma'),0);
     }  
 }
 
-function respuesta_puerta2(){
-    if(puerta2_on == 0){
-        set(ref(db, 'llave_living/puerta2'), {
-            estado: 1,
-          });
-    } else if (puerta2_on == 1){ 
-        set(ref(db, 'llave_living/puerta2'), {
-            estado: 0,
-          });
-    }  
-}
-
+//EMPIEZAN LOS CAMBIOS
 function cambio_luz_dormitorio(){
     if(l_dormitorio == 0){
         luz_dormitorio.innerHTML = "<img src=\"media/luz_apagada.png\">";
@@ -303,7 +301,13 @@ function cambio_puerta1(){
         texto_puerta1.innerText = "Puerta Cerrada";
     } else if (puerta1_on == 1){ 
         puerta1.innerHTML = "<img src=\"media/campana_encendida.png\">";
-        texto_puerta1.innerText = "Puerta Abierta";
+        if(alarma_boton_on == 1){
+            texto_puerta1.innerText = "PUERTA ABIERTA CON ALARMA";
+            alarma_texto.className = "texto_rojo";
+            alarma_texto.innerText = "ATENCION: PUERTA ABIERTA!!";
+        } else if (alarma_boton_on == 0){
+            texto_puerta1.innerText = "Puerta Abierta";
+        }
     }  
 }
 
@@ -313,6 +317,38 @@ function cambio_puerta2(){
         texto_puerta2.innerText = "Puerta Cerrada";
     } else if (puerta2_on == 1){ 
         puerta2.innerHTML = "<img src=\"media/campana_encendida.png\">";
-        texto_puerta2.innerText = "Puerta Abierta";
+        if(alarma_boton_on == 1){
+            texto_puerta2.innerText = "PUERTA ABIERTA CON ALARMA";
+            alarma_texto.className = "texto_rojo";
+            alarma_texto.innerText = "ATENCION: PUERTA ABIERTA!!";
+        } else if (alarma_boton_on == 0){
+            texto_puerta2.innerText = "Puerta Abierta";
+        }
+    }  
+}
+
+function cambio_temperatura(){
+    temp.innerText = `Temperatura: ${temp_dato}°C`;
+}
+
+function cambio_boton_alarma(){
+    if(alarma_boton_on == 0){
+        alarma_boton.innerHTML = "<img src=\"media/boton_alarma_off.png\">";
+        alarma_texto.innerText = "";
+        if(puerta2_on == 1){
+            alarma_texto.className = "texto_rojo";
+            alarma_texto.innerText = "ATENCION: PUERTA ABIERTA CON ALARMA!!";
+        } else if (puerta2_on == 0){
+            alarma_texto.innerText = "";
+        }
+    } else if (alarma_boton_on == 1){ 
+        alarma_boton.innerHTML = "<img src=\"media/boton_alarma_on.png\">";
+        if(puerta2_on == 1){
+            alarma_texto.className = "texto_rojo";
+            alarma_texto.innerText = "ATENCION: PUERTA ABIERTA CON ALARMA!!";
+        } else if (puerta2_on == 0){
+            alarma_texto.className = "texto_verde";
+            alarma_texto.innerText = "ALARMA ENCENDIDA";
+        }
     }  
 }
