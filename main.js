@@ -58,7 +58,7 @@ let alarma_texto_on = 0;
 //Agrego eventos de lecturas de cada componente en firebase
 
 //Luz dormitorio
-onValue(ref(db, '/ESP32_TFT/estado'), (snapshot) => { //TODO original /luz_dormitorio/estado
+onValue(ref(db, '/luz_dormitorio/estado'), (snapshot) => { 
     l_dormitorio = snapshot.val(); 
     cambio_luz_dormitorio();
 });
@@ -128,11 +128,11 @@ alarma_boton.addEventListener("click",respuesta_boton_alarma);
 //Funciones
 function respuesta_luz_dormitorio(){
     if(l_dormitorio == 0){
-        set(ref(db, '/ESP32_TFT'), { // TODO original /luz_dormitorio
+        set(ref(db, '/luz_dormitorio'), { 
             estado: 1,
           });
     } else if (l_dormitorio == 1){ 
-        set(ref(db, '/ESP32_TFT'), {
+        set(ref(db, '/luz_dormitorio'), {
             estado: 0,
           });
     }
