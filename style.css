@@ -296,6 +296,7 @@ header{
 .texto_puerta{
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .texto_puerta p {

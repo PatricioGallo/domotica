@@ -39,6 +39,8 @@ let texto_puerta2 = document.getElementById("texto_puerta2");
 let temp = document.getElementById("temp");
 let alarma_boton = document.getElementById("alarma_boton");
 let alarma_texto = document.getElementById("alarma_texto");
+let horas_puerta2 = document.getElementById("horas_puerta2");
+let fecha_puerta2 = document.getElementById("fecha_puerta2");
 
 let l_dormitorio = 0;
 let on_aa = 0;
@@ -53,7 +55,11 @@ let puerta1_on = 0;
 let puerta2_on = 0;
 let temp_dato =0 ;
 let alarma_boton_on = 0;
-let alarma_texto_on = 0;
+let hora_puerta2 =0;
+let minutos_puerta2 = 0;
+let dia_puerta2 = 0;
+let mes_puerta2 = 0;
+let ano_puerta2 = 0;
 
 //Agrego eventos de lecturas de cada componente en firebase
 
@@ -111,6 +117,31 @@ onValue(ref(db, 'ESP32_TFT/temperatura'), (snapshot) => {
 onValue(ref(db, 'llave_living/puerta2/boton_alarma'), (snapshot) => {
     alarma_boton_on = snapshot.val();
     cambio_boton_alarma();
+});
+//hora de apertura de puerta2 
+onValue(ref(db, 'llave_living/puerta2/hora'), (snapshot) => {
+    hora_puerta2 = snapshot.val();
+    cambio_puerta2();
+});
+//minutos de apertura de puerta2 
+onValue(ref(db, 'llave_living/puerta2/minutos'), (snapshot) => {
+    minutos_puerta2 = snapshot.val();
+    cambio_puerta2();
+});
+//dia de apertura de puerta2  
+onValue(ref(db, 'llave_living/puerta2/dia'), (snapshot) => {
+    dia_puerta2 = snapshot.val();
+    cambio_puerta2();
+});
+//mes de apertura de puerta2 
+onValue(ref(db, 'llave_living/puerta2/mes'), (snapshot) => {
+    mes_puerta2 = snapshot.val();
+    cambio_puerta2();
+});
+//ano de apertura de puerta2 
+onValue(ref(db, 'llave_living/puerta2/ano'), (snapshot) => {
+    ano_puerta2 = snapshot.val();
+    cambio_puerta2();
 });
 
 //Llamdao a funciones
@@ -315,14 +346,24 @@ function cambio_puerta2(){
     if(puerta2_on == 0){
         puerta2.innerHTML = "<img src=\"media/campana_apagada.png\">";
         texto_puerta2.innerText = "Puerta Cerrada";
+        if(minutos_puerta2 < 10){
+            horas_puerta2.innerText = `${hora_puerta2}:0${minutos_puerta2}`;
+        } else{
+            horas_puerta2.innerText = `${hora_puerta2}:${minutos_puerta2}`;
+        }
+        fecha_puerta2.innerText = `${dia_puerta2}/${mes_puerta2}/${ano_puerta2}`;
     } else if (puerta2_on == 1){ 
         puerta2.innerHTML = "<img src=\"media/campana_encendida.png\">";
         if(alarma_boton_on == 1){
             texto_puerta2.innerText = "PUERTA ABIERTA CON ALARMA";
             alarma_texto.className = "texto_rojo";
             alarma_texto.innerText = "ATENCION: PUERTA ABIERTA!!";
+            horas_puerta2.innerText = "";
+            fecha_puerta2.innerText = "";
         } else if (alarma_boton_on == 0){
             texto_puerta2.innerText = "Puerta Abierta";
+            horas_puerta2.innerText = "";
+            fecha_puerta2.innerText = "";
         }
     }  
 }
