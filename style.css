@@ -27,32 +27,33 @@ header{
     margin-top: 30px;
 }
 .right_container{
-    width: 100%;
+    width: 90%;
+    margin-left: 5%;
     display: flex;
-    flex-direction: row;
-    justify-content:space-around;
+    justify-content:center;
 }
 .right_container h1{
     font-size: 20px;
     color: azure;
     margin-top: 50px;
+    margin-right: 10px;
 }
 .right_container h2{
     font-size: 20px;
     color: azure;
     margin-top: 50px;
-    margin-right: 17%;
+    margin-right: 70px;
     font-weight: 500;
 }
-.right_container a{
+.right_container button{
+    width: 70px;
+    height: 50px;
+    background-color: black;
+    border: 0px;
+    margin-top: 33px;
     color: white;
     text-decoration: none;
     font-size: 20px;
-    margin-top: 50px;
-    margin-right: 5px;
-}
-.right_container a:hover{
-    color: grey;
 }
 
 /*  COMIENZA BODY PC*/
@@ -563,6 +564,62 @@ header{
     width: 60px;
     height: 60px; 
 }
+/*  LOGIN  */
+.cuerpo_login{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.formulario_login{
+    width: 370px;
+    height: 500px;
+    font-size: 20px;
+}
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+  
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  .error_login{
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    color: red;
+  }
 /*  COMIENZA FOOTER  */
 footer{
     width: 100%;
