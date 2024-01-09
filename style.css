@@ -63,14 +63,15 @@ header{
     justify-content: center;
 }
 .pre_cuerpo{
-    width: 100%;
+    width: 98%;
+    margin-left: 1%;
     height: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-bottom: 20px;
 }
 .temperatura{
-    width: 200px;
+    width: 170px;
     height: 50px;
     display: flex;
     flex-direction: column;
@@ -78,6 +79,7 @@ header{
 }
 .temperatura h1{
     font-size: 20px;
+    text-align: center;
 }
 .boton_alarma{
     width: 50px;
@@ -98,7 +100,7 @@ header{
     display: flex;
     flex-direction: column;
     justify-content: center; 
-    margin-left: 20px;
+    text-align: center;
 }
 .texto_verde{
     color: green;
