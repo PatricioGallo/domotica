@@ -62,13 +62,19 @@ header{
     flex-direction: column;
     justify-content: center;
 }
-.pre_cuerpo{
+.pre_cuerpo_anterior{
     width: 98%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.pre_cuerpo{
+    width:375px;;
     margin-left: 1%;
     height: 50px;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
 }
 .temperatura{
     width: 170px;
